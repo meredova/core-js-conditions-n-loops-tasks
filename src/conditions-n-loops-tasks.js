@@ -292,26 +292,27 @@ function isContainNumber(num, digit) {
  *  [2, 3, 9, 5] => 2       => 2 + 3 === 5 then balance element is 9 and its index = 2
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
-function getBalanceIndex(arr) {
-  const n = arr.length;
+function getBalanceIndex(/* arr */) {
+  // const n = arr.length;
 
-  for (let i = 0; i < n; i + 1) {
-    let leftSum = 0;
-    let rightSum = 0;
-    for (let j = 0; j < i; j + 1) {
-      leftSum += arr[j];
-    }
+  // for (let i = 0; i < n; i + 1) {
+  //   let leftSum = 0;
+  //   let rightSum = 0;
+  //   for (let j = 0; j < i; j + 1) {
+  //     leftSum += arr[j];
+  //   }
 
-    for (let j = i + 1; j < n; j + 1) {
-      rightSum += arr[j];
-    }
+  //   for (let j = i + 1; j < n; j + 1) {
+  //     rightSum += arr[j];
+  //   }
 
-    if (leftSum === rightSum) {
-      return i;
-    }
-  }
+  //   if (leftSum === rightSum) {
+  //     return i;
+  //   }
+  // }
 
-  return -1;
+  // return -1;
+  throw new Error('Not implemented');
 }
 
 /**
@@ -392,24 +393,6 @@ function getSpiralMatrix(size) {
  *  ]                 ]
  */
 function rotateMatrix(/* matrix */) {
-  // const n = matrix.length;
-  // const rotatedMatrix = new Array(n).fill(0).map(() => new Array(n).fill(0));
-
-  // for (let layer = 0; layer < Math.floor(n / 2); layer += 1) {
-  //   const first = layer;
-  //   const last = n - 1 - layer;
-
-  //   for (let i = first; i < last; i += 1) {
-  //     const offset = i - first;
-  //     const top = matrix[first][i];
-  //     rotatedMatrix[first][i] = matrix[last - offset][first];
-  //     rotatedMatrix[last - offset][first] = matrix[last][last - offset];
-  //     rotatedMatrix[last][last - offset] = matrix[i][last];
-  //     rotatedMatrix[i][last] = top;
-  //   }
-  // }
-
-  // return rotatedMatrix;
   throw new Error('Not implemented');
 }
 
@@ -427,19 +410,20 @@ function rotateMatrix(/* matrix */) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(arr) {
-  const n = arr.length;
-  const newArr = arr;
+function sortByAsc(/* arr */) {
+  // const n = arr.length;
+  // const newArr = arr;
 
-  for (let i = 0; i < n - 1; i += 1) {
-    for (let j = 0; j < n - i - 1; j += 1) {
-      if (newArr[j] > newArr[j + 1]) {
-        [newArr[j], newArr[j + 1]] = [newArr[j + 1], newArr[j]];
-      }
-    }
-  }
+  // for (let i = 0; i < n - 1; i += 1) {
+  //   for (let j = 0; j < n - i - 1; j += 1) {
+  //     if (newArr[j] > newArr[j + 1]) {
+  //       [newArr[j], newArr[j + 1]] = [newArr[j + 1], newArr[j]];
+  //     }
+  //   }
+  // }
 
-  return newArr;
+  // return newArr;
+  throw new Error('Not implemented');
 }
 
 /**
