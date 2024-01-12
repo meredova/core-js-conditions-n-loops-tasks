@@ -153,36 +153,42 @@ function convertNumberToString(numberStr) {
     8: 'eight',
     9: 'nine',
   };
-
   let result = '';
   let isNegative = false;
-  let lastSpaceIndex = -1;
-  let reconstructedResult = '';
 
-  for (let i = 0; i < numberStr.length; i + 1) {
+  for (let i = 0; i < numberStr.length; i += 1) {
     const char = numberStr[i];
 
-    if (char === '-') {
-      isNegative = true;
-    } else if (char === '.') {
-      result += 'point ';
-    } else if (char in digitWords) {
-      result += `${digitWords[char]} `;
-      lastSpaceIndex = result.length - 1;
+    switch (char) {
+      case '-':
+        isNegative = true;
+        break;
+      case '.':
+      case ',':
+        result += ' point';
+        break;
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+        result += `${result === '' ? '' : ' '}${digitWords[char]}`;
+        break;
+      default:
+        break;
     }
   }
 
   if (isNegative) {
-    reconstructedResult += 'minus ';
+    result = `minus ${result}`;
   }
 
-  for (let i = 0; i < result.length; i + 1) {
-    if (i !== lastSpaceIndex) {
-      reconstructedResult += result[i];
-    }
-  }
-
-  return reconstructedResult;
+  return result;
 }
 
 /**
