@@ -286,20 +286,24 @@ function isContainNumber(num, digit) {
 function getBalanceIndex(arr) {
   const n = arr.length;
 
+  if (n === 0) {
+    return -1;
+  }
+
+  let leftSum = 0;
+  let rightSum = 0;
+
+  for (let i = 1; i < n; i += 1) {
+    rightSum += arr[i];
+  }
+
   for (let i = 0; i < n; i += 1) {
-    let leftSum = 0;
-    let rightSum = 0;
-    for (let j = 0; j < i; j += 1) {
-      leftSum += arr[j];
-    }
-
-    for (let j = i + 1; j < n; j += 1) {
-      rightSum += arr[j];
-    }
-
     if (leftSum === rightSum) {
       return i;
     }
+
+    leftSum += arr[i];
+    rightSum -= arr[i + 1] || 0;
   }
 
   return -1;
