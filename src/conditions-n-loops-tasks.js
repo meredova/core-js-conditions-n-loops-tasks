@@ -140,64 +140,49 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  // const digitWords = [
-  //   'zero',
-  //   'one',
-  //   'two',
-  //   'three',
-  //   'four',
-  //   'five',
-  //   'six',
-  //   'seven',
-  //   'eight',
-  //   'nine',
-  // ];
-  // let result = '';
-  // let modifiedNumberStr = numberStr;
-  // let isNegative = false;
+function convertNumberToString(numberStr) {
+  const digitWords = {
+    0: 'zero',
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+  };
 
-  // if (numberStr[0] === '-') {
-  //   isNegative = true;
-  //   modifiedNumberStr = modifiedNumberStr.substring(1);
-  // }
+  let result = '';
+  let isNegative = false;
+  let lastSpaceIndex = -1;
+  let reconstructedResult = '';
 
-  // for (let i = 0; i < modifiedNumberStr.length; i += 1) {
-  //   const char = modifiedNumberStr[i];
+  for (let i = 0; i < numberStr.length; i + 1) {
+    const char = numberStr[i];
 
-  //   switch (char) {
-  //     case '.':
-  //     case ',':
-  //       result += 'point ';
-  //       break;
-  //     default: {
-  //       const digitWord = digitWords[parseInt(char, 10)];
-  //       result += `${digitWord} `;
-  //     }
-  //   }
-  // }
+    if (char === '-') {
+      isNegative = true;
+    } else if (char === '.') {
+      result += 'point ';
+    } else if (char in digitWords) {
+      result += `${digitWords[char]} `;
+      lastSpaceIndex = result.length - 1;
+    }
+  }
 
-  // if (isNegative) {
-  //   result = `minus ${result}`;
-  // }
-  // let trimmedResult = '';
-  // let start = 0;
-  // let end = result.length - 1;
+  if (isNegative) {
+    reconstructedResult += 'minus ';
+  }
 
-  // while (result[start] === ' ' && start <= end) {
-  //   start += 1;
-  // }
+  for (let i = 0; i < result.length; i + 1) {
+    if (i !== lastSpaceIndex) {
+      reconstructedResult += result[i];
+    }
+  }
 
-  // while (result[end] === ' ' && start <= end) {
-  //   end -= 1;
-  // }
-
-  // for (let i = start; i <= end; i += 1) {
-  //   trimmedResult += result[i];
-  // }
-
-  // return trimmedResult;
-  throw new Error('Not implemented');
+  return reconstructedResult;
 }
 
 /**
